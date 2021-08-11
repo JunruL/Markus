@@ -1,4 +1,7 @@
 <header id='header'>
+  <div id='logo'>
+    <a id='logo-img' aria-label='<%= t('menu.dashboard') %>'></a>
+  </div>
   <div id='course'>
     <strong><%= Settings.course_name %></strong>
   </div>
@@ -13,29 +16,9 @@
         <%= @current_user.display_name %>
         ( <strong><%= @current_user.user_name %></strong> )
       </span>
-      <% if @current_user.admin? || (session[:real_uid] &&
-              User.find_by_id(session[:real_uid]).admin?) %>
-        <%= link_to t('main.role_switch.switch_role'),
-                    role_switch_main_index_path,
-                    remote: true,
-                    class: 'button inline-button switch-role' %>
-      <% end %>
-
-      <%= link_to(t('main.log_out'),
-                  logout_main_index_path,
-                  id: 'logout_link',
-                  method: :post,
-                  class: 'button inline-button') unless
-            Settings.logout_redirect == 'NONE' %>
-
-      <% if Settings.remote_user_auth &&
-            !session[:real_uid].nil? %>
-        <%= link_to t('main.role_switch.clear_role_switch_session'),
-                    controller: 'main',
-                    action: 'clear_role_switch_session' %>
-      <% end %>
     </span>
   </div>
+
 
   <div id='working' class="no-display">
     <span><%= t(:working) %></span>

@@ -917,6 +917,7 @@ nav {
   ul {
     margin: 0;
     padding: 0;
+    text-align: center;
 
     li {
       border-radius: $radius $radius 0 0;
@@ -932,6 +933,7 @@ nav {
         min-width: 11em;
         padding: 0 1em;
       }
+      ul li:last-child {border-right:0;}
     }
   }
 
